@@ -1,0 +1,29 @@
+status: APPROVED
+classes:
+- akiec
+- bcc
+- bkl
+- df
+- mel
+- nv
+- vasc
+ham_map:
+  akiec: akiec
+  bcc: bcc
+  bkl: bkl
+  df: df
+  mel: mel
+  nv: nv
+  vasc: vasc
+isic2019_map:
+  MEL: mel
+  NV: nv
+  BCC: bcc
+  BKL: bkl
+  DF: df
+  VASC: vasc
+  AK: akiec
+out_of_taxonomy:
+- SCC
+- UNK
+sensitivity_maps: {}

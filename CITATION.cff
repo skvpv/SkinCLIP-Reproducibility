@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "Please cite the archived software version used in your work."
+title: "SkinCLIP Reproducibility"
+type: software
+version: 1.0.0
+license: MIT
+authors:
+  - family-names: "Ibrahim"
+    given-names: "Nadim"
+  - family-names: "Rajalakshmi"
+    given-names: "N. R."
+  - family-names: "Sivakumar"
+    given-names: "V."
+  - family-names: "Mithra"
+    given-names: "S."
+abstract: "Code and reproducibility resources for an evaluation of text-derived class prototypes and metadata in dermoscopic image classification."
+keywords:
+  - dermoscopy
+  - classification
+  - reproducibility
+  - dataset shift

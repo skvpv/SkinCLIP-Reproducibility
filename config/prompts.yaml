@@ -1,0 +1,39 @@
+status: APPROVED
+sources:
+- 'Argenziano G, et al. Dermoscopy of pigmented skin lesions: results of a consensus
+  meeting via the Internet. J Am Acad Dermatol. 2003;48(5):679-693.'
+- 'Kittler H, Rosendahl C, Cameron A, Tschandl P. Dermatoscopy: Pattern Analysis of
+  Pigmented and Non-Pigmented Lesions. 2nd ed. Facultas; 2016.'
+- Tschandl P, Rosendahl C, Kittler H. The HAM10000 dataset. Sci Data. 2018;5:180161
+  (class definitions).
+order:
+- akiec
+- bcc
+- bkl
+- df
+- mel
+- nv
+- vasc
+prompts:
+  akiec: A dermoscopic image of actinic keratosis or intraepithelial carcinoma (Bowen's
+    disease), showing a red pseudo-network, white-yellow surface scale, rosettes,
+    and clustered glomerular or dotted vessels.
+  bcc: A dermoscopic image of basal cell carcinoma, showing arborizing telangiectatic
+    vessels, blue-grey ovoid nests and globules, leaf-like or spoke-wheel areas, ulceration,
+    and no pigment network.
+  bkl: A dermoscopic image of a benign keratosis such as seborrheic keratosis, solar
+    lentigo, or lichen planus-like keratosis, showing milia-like cysts, comedo-like
+    openings, fissures and ridges, a moth-eaten border, or a fingerprint pattern.
+  df: A dermoscopic image of dermatofibroma, showing a central white scar-like patch
+    surrounded by a delicate light-brown peripheral pigment network.
+  mel: A dermoscopic image of melanoma, showing asymmetry of colour and structure,
+    an atypical pigment network, irregular streaks, irregular dots and globules, a
+    blue-white veil, and regression structures.
+  nv: A dermoscopic image of a melanocytic nevus, showing a symmetric lesion with
+    a regular pigment network or regular globules, uniform brown colour, and a regular
+    border.
+  vasc: A dermoscopic image of a vascular lesion such as haemangioma or angiokeratoma,
+    showing well-demarcated red, purple, or blue lacunae and homogeneous red-blue
+    areas.
+template_prompts_not_used:
+  pattern: A dermoscopic image of {class_name}.

@@ -1,0 +1,19 @@
+policy_id: precautionary
+status: APPROVED
+confirmed_duplicate: false
+scope: All ISIC2019_train images in similarity_screen tiers AUTO_EXCLUDE (strict) and REVIEW, plus
+  every image sharing a lesion_id with such an image. Images without a lesion_id are
+  excluded individually. Confirmed overlap (image ID, HAM lesion ID, pixel-identical
+  content) is recorded separately as confirmed.
+rationale: Visual review showed that similarity scores cannot establish lesion identity.
+  About 173 of the 15,316 eligible images would be flagged under the calibration null
+  by chance versus 299 observed, so flags mix chance look-alikes with probable near-duplicates
+  and cannot be separated per image. Excluding all flagged images is deterministic
+  and removes the possibility of training-test contamination from this set; its effect
+  on performance estimates is unknown.
+expected:
+  precautionary_similarity_strict: 35
+  precautionary_similarity_review: 264
+  precautionary_lesion_expansion: 322
+  e1: 14268
+  e1_oot: 427

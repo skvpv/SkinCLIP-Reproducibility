@@ -1,0 +1,104 @@
+{
+  "method": "Independent cluster-level confusion bootstrap; no skinclip imports",
+  "seed": 12345,
+  "n_boot": 2000,
+  "n_images": 14268,
+  "n_clusters": 6080,
+  "n_seed_runs": 12,
+  "point_estimates": {
+    "F11": {
+      "per_seed": [
+        0.4257213445365946,
+        0.3714005128698957,
+        0.3655117448508659
+      ],
+      "mean": 0.38754453408578543
+    },
+    "F01": {
+      "per_seed": [
+        0.3921359538879882,
+        0.3585073897241599,
+        0.3407271570664877
+      ],
+      "mean": 0.36379016689287863
+    },
+    "F10": {
+      "per_seed": [
+        0.40252333805159707,
+        0.3473190877937493,
+        0.4572869470162698
+      ],
+      "mean": 0.4023764576205388
+    },
+    "F00": {
+      "per_seed": [
+        0.3207206185508908,
+        0.31958653561416706,
+        0.3471769123427358
+      ],
+      "mean": 0.32916135550259784
+    }
+  },
+  "confirmatory": {
+    "H1": {
+      "arms": [
+        "F11",
+        "F01"
+      ],
+      "delta": 0.0237543671929068,
+      "ci95": [
+        0.004743468995012651,
+        0.04283881850044226
+      ],
+      "p_boot": 0.016,
+      "negative_or_zero_replicates": 16,
+      "positive_or_zero_replicates": 1984,
+      "p_holm": 0.032
+    },
+    "H2": {
+      "arms": [
+        "F11",
+        "F10"
+      ],
+      "delta": -0.014831923534753377,
+      "ci95": [
+        -0.042948205199871074,
+        0.013808264268168455
+      ],
+      "p_boot": 0.309,
+      "negative_or_zero_replicates": 1691,
+      "positive_or_zero_replicates": 309,
+      "p_holm": 0.309
+    },
+    "H3": {
+      "arms": [
+        "F11",
+        "F00"
+      ],
+      "delta": 0.05838317858318759,
+      "ci95": [
+        0.032401459741154506,
+        0.08506102981829802
+      ],
+      "p_boot": 0.0,
+      "negative_or_zero_replicates": 0,
+      "positive_or_zero_replicates": 2000,
+      "p_holm": 0.0
+    }
+  },
+  "input_sha256": {
+    "eval/F11_s0/e1.csv": "7efd26da883f67479bcc6f20c2480fafbb79ad4c78bc67ec92114ec3636ddac4",
+    "eval/F11_s1/e1.csv": "46032cfd6954da3a32707b6575c6a5aa87a24bac893b7b39a7696734baf790ae",
+    "eval/F11_s2/e1.csv": "bc4e9abc91d55b339cf0f90862458fcec37f2dc25e0732c91349e8ffbf872cda",
+    "eval/F01_s0/e1.csv": "fb8e5088bae48d506d68f8a20f5cd813ea917eaeafae0186c7cdf9d070d689e1",
+    "eval/F01_s1/e1.csv": "0c3007890d8fbd87636fce6258834bbb876cdf4afa58cc348c85cef3a1966b40",
+    "eval/F01_s2/e1.csv": "c994f6a31eaf9cb40d952ffa82e708c7059ae12b86bda841cf3f20fb0c9b769c",
+    "eval/F10_s0/e1.csv": "9a5e94a52e7a42b46fe690bb430f4a62ff9ca056cbf7314409626d1efb46bbb7",
+    "eval/F10_s1/e1.csv": "efef5323bc65a1c9867aaed95e67bc08ec5bcebbd474c8982fd2c62b5ad0675f",
+    "eval/F10_s2/e1.csv": "8052182f8141f6b905d7853e821e489dd4a16ef3ac9cb70e53550f05f74ea2db",
+    "eval/F00_s0/e1.csv": "f2d568725f34c4ea0a4aade9f0ebd464e787af646e092bf64cdcf015b5179aa3",
+    "eval/F00_s1/e1.csv": "24d4aee81a0e3beaf99d9e3c52f220d3d0b7a6557e8815311186574bbc522ea3",
+    "eval/F00_s2/e1.csv": "3e9e523c0ce10871bb561b4f7463d082a2809cc6c8b809dbf0a27eba0b657d9a"
+  },
+  "note": "Resampling matches the documented majority-class stratification and NumPy draw ordering. Results independently computed from original per-run CSVs."
+}

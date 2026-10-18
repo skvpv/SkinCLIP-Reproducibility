@@ -1,0 +1,12 @@
+approved: false
+approver: ''
+date: ''
+decisions:
+  near_duplicate_policy: precautionary
+  taxonomy: ''
+  site_table: ''
+  source_attribution: ''
+  prompts: ''
+  small_class_rule: ''
+  label_informed_calibration: ''
+notes: ''

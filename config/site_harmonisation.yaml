@@ -1,0 +1,45 @@
+status: APPROVED
+groups:
+- head_neck
+- torso
+- upper_extremity
+- lower_extremity
+- palms_soles
+- oral_genital
+- unknown
+ambiguous_for_pi_review:
+  HAM.hand: palm (palms_soles) vs dorsum (upper_extremity) not distinguishable ->
+    proposed upper_extremity
+  HAM.foot: sole (palms_soles) vs dorsum (lower_extremity) not distinguishable ->
+    proposed lower_extremity
+  HAM.acral: acral -> palms_soles
+  HAM.trunk: unspecified trunk -> torso (ISIC anterior/posterior/lateral torso are
+    merged into torso)
+sources:
+  HAM:
+    abdomen: torso
+    acral: palms_soles
+    back: torso
+    chest: torso
+    ear: head_neck
+    face: head_neck
+    foot: lower_extremity
+    genital: oral_genital
+    hand: upper_extremity
+    lower extremity: lower_extremity
+    neck: head_neck
+    scalp: head_neck
+    trunk: torso
+    upper extremity: upper_extremity
+    unknown: unknown
+    nan: unknown
+  ISIC2019_train:
+    anterior torso: torso
+    posterior torso: torso
+    lateral torso: torso
+    head/neck: head_neck
+    upper extremity: upper_extremity
+    lower extremity: lower_extremity
+    palms/soles: palms_soles
+    oral/genital: oral_genital
+    nan: unknown

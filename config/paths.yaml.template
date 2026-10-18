@@ -1,0 +1,19 @@
+project_root: <SET_ME>/skinclip_revision            # this package
+work_dir: <SET_ME>/skinclip_work                     # runs, audit, cohorts, cache, integrity, results (needs ~25 GB)
+
+raw:   # immutable downloads (see docs/DATA_AND_WEIGHTS.md)
+  ham_metadata_csv: <SET_ME>/raw/HAM10000/HAM10000_metadata.csv
+  ham_image_dirs:
+    - <SET_ME>/raw/HAM10000/ISIC2018_Task3_Training_Input
+  ham_lesion_groupings_csv: <SET_ME>/raw/HAM10000/ISIC2018_Task3_Training_LesionGroupings.csv
+  isic2019_train_gt_csv: <SET_ME>/raw/ISIC2019/ISIC_2019_Training_GroundTruth.csv
+  isic2019_train_meta_csv: <SET_ME>/raw/ISIC2019/ISIC_2019_Training_Metadata.csv
+  isic2019_train_image_dirs:
+    - <SET_ME>/raw/ISIC2019/ISIC_2019_Training_Input
+  isic2019_test_gt_csv:
+  isic2019_test_meta_csv:
+  isic2019_test_image_dirs: []
+
+weights:
+  hf_home: <SET_ME>/hf_home          # staged Hugging Face cache; jobs run with HF_HUB_OFFLINE=1
+  torch_home: <SET_ME>/torch_home    # staged torchvision weights (ResNet-50 for MetaBlock)

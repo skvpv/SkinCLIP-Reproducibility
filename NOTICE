@@ -1,0 +1,4 @@
+The MetaBlock implementation derives from paaatcha/MetaBlock, commit e283174.
+Its original copyright and MIT licence are retained in third_party/MetaBlock_LICENSE.
+Dataset and pretrained-model licences remain those of their original providers.
+The repository MIT licence does not relicense those external materials.

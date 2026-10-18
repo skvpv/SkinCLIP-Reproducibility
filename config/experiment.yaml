@@ -1,0 +1,206 @@
+design_version: '1.0'
+synthetic: false
+split_seed: 20261013
+split_ratios:
+- 0.7
+- 0.15
+- 0.15
+seeds:
+- 0
+- 1
+- 2
+include_e2: false
+min_external_lesions_per_class: 30
+image:
+  cache_size: 224
+  clahe_clip_limit: 2.0
+  clahe_tile_grid: 8
+  resize_interpolation: area
+augment:
+  rotation_deg: 30
+  hflip_p: 0.5
+  vflip_p: 0.5
+  brightness: 0.2
+  contrast: 0.2
+  saturation: 0.2
+  hue: 0.05
+model:
+  image_backbone: vit_base_patch16_224
+  image_pretrained: true
+  img_size: 224
+  text_encoder: emilyalsentzer/Bio_ClinicalBERT
+  text_max_len: 128
+  embed_dim: 256
+  meta_hidden: 128
+  fusion_hidden: 512
+  dropout: 0.1
+  logit_scale_init: 14.2857142857
+  logit_scale_min: 1.0
+  logit_scale_max: 100.0
+  metablock:
+    backbone: resnet50
+    feat_maps: 64
+    reducer: 0
+  biomedclip: hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224
+train:
+  optimizer: adam
+  lr: 0.0001
+  weight_decay: 0.0001
+  batch_size: 32
+  grad_clip: 1.0
+  max_epochs: 30
+  patience: 5
+  select_metric: bma
+  focal_gamma: 2.0
+  focal_alpha: 1.0
+  label_smoothing: 0.1
+  num_workers: 8
+  amp: bf16
+  deterministic: true
+lambda:
+  grid:
+  - 0.0
+  - 0.5
+  - 1.0
+  select_seed: 0
+  tie_break: smaller
+probe:
+  lr: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  max_epochs: 100
+  patience: 10
+arms:
+  F11:
+    kind: prototype
+    use_meta: true
+    protos: text
+    lambda: grid
+    seeds:
+    - 0
+    - 1
+    - 2
+    lane: gpu
+    role: proposed
+  F01:
+    kind: prototype
+    use_meta: true
+    protos: learned
+    lambda: grid
+    seeds:
+    - 0
+    - 1
+    - 2
+    lane: gpu
+    role: I+M learned-prototype baseline / H1 control
+  F10:
+    kind: prototype
+    use_meta: false
+    protos: text
+    lambda: inherit_F11
+    seeds:
+    - 0
+    - 1
+    - 2
+    lane: gpu
+    role: image + text prototypes (H2)
+  F00:
+    kind: prototype
+    use_meta: false
+    protos: learned
+    lambda: inherit_F01
+    seeds:
+    - 0
+    - 1
+    - 2
+    lane: gpu
+    role: image-only ViT baseline (H3)
+  MB:
+    kind: metablock
+    seeds:
+    - 0
+    - 1
+    - 2
+    lane: gpu
+    role: MetaBlock (published I+M baseline)
+  BCLP:
+    kind: biomedclip_probe
+    seeds:
+    - 0
+    - 1
+    - 2
+    lane: gpu_light
+    role: BiomedCLIP linear probe
+  BCZS:
+    kind: biomedclip_zeroshot
+    train: false
+    seeds: []
+    lane: gpu_light
+    role: BiomedCLIP zero-shot
+  M0:
+    kind: meta_only
+    seeds:
+    - 0
+    - 1
+    - 2
+    lane: cpu
+    role: metadata-only control
+audit:
+  embedding_model: vit_base_patch16_224
+  embedding_pretrained: true
+  embedding_img_size: 224
+  use_embeddings: true
+  fpr_strict: 0.0005
+  fpr_review: 0.005
+  n_negative_pairs: 0
+  max_split_group_images: 50
+  seed: 20261013
+stats:
+  n_boot: 2000
+  boot_seed: 12345
+  mcnemar_seed: 777
+  alpha: 0.05
+  primary_metric: bma
+  confirmatory:
+    H1:
+    - F11
+    - F01
+    H2:
+    - F11
+    - F10
+    H3:
+    - F11
+    - F00
+  supporting:
+    H1r:
+    - F10
+    - F00
+  descriptive:
+  - - F11
+    - MB
+  - - F11
+    - BCLP
+  - - F11
+    - BCZS
+  - - F11
+    - M0
+  auroc_ci: true
+interpret:
+  arm: F11
+  seed: 0
+  n_correct_per_class: 2
+  n_incorrect_per_class: 2
+  sample_seed: 4242
+  ig_steps: 50
+  deletion_fractions:
+  - 0.0
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+  - 0.9
+  tsne_max_points: 3000

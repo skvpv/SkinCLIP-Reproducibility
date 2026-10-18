@@ -1,0 +1,6 @@
+status: APPROVED
+prefix_to_institution:
+  HAM: HAM10000
+  BCN: BCN_20000
+  MSK: MSK
+  <none>: unattributed
